@@ -27,7 +27,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-function shortcodes_init()
+function eggplant_shortcodes_init()
 {
     // [eggplant rating="numeral-one-through-five"]
 	function eggplant_func( $atts = [], $content = null ) {
@@ -38,18 +38,33 @@ function shortcodes_init()
 			$a = shortcode_atts( array(
 				'rating' => '5',
 			), $atts );
-	
-		return "rating = {$a['rating']}";
+
+		$rating = "rating = {$a['rating']}";
+
+// read https://speckyboy.com/getting-started-with-wordpress-shortcodes-examples/ & https://developer.wordpress.org/plugins/plugin-basics/
+		if ( $a['rating']==5 ) {
+		  return "<pre>" . $rating . "</pre>";
+		} elseif ( $a['rating']==4 ) {
+		
+		} elseif ( $a['rating']==3 ) {
+
+		} elseif ( $a['rating']==2 ) {
+
+		} elseif ( $a['rating']==1 ) {
+		
+		} else {
+		  return "<pre>" . $rating . "</pre>";
+		}
+
 	}
 	add_shortcode( 'eggplant', 'eggplant_func' );
 }
-add_action('init', 'shortcodes_init');
-
+add_action('init', 'eggplant_shortcodes_init');
 
 
 // html for admin page
 /*
-function ei_url_replacement_admin_page(){
+function eggplant_func_admin_page(){
 	if (!current_user_can('manage_options'))  {
 		wp_die( __('You do not have sufficient permissions to access this page.') );
 	}
@@ -94,18 +109,18 @@ function ei_url_replacement_admin_page(){
 
 
 // add admin page
-function ei_url_replacement_setup_menu(){
-        add_menu_page( 'URL Replacement', 'URL Replacement', 'manage_options', 'url-replacement', 'ei_url_replacement_admin_page', 'dashicons-update' );
+function eggplant_func_setup_menu(){
+        add_menu_page( 'EGGPLANT', 'EGGPLANT', 'manage_options', 'eggplant-rating', 'eggplant_func_admin_page', 'dashicons-update' );
 }
-add_action('admin_menu', 'ei_url_replacement_setup_menu');
+add_action('admin_menu', 'eggplant_func_setup_menu');
 
 // admin page styles
-function ei_load_custom_wp_admin_style($hook) {
-        // Load only on ?page=url-replacement
-        if($hook != 'toplevel_page_url-replacement') {
+function load_custom_wp_admin_style($hook) {
+        // Load only on ?page=eggplant-rating
+        if($hook != 'toplevel_page_eggplant-rating') {
                 return;
         }
         wp_enqueue_style( 'custom_wp_admin_css', plugins_url('assets/css/admin-styles.css', __FILE__) );
 }
-add_action( 'admin_enqueue_scripts', 'ei_load_custom_wp_admin_style' );
+add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 */
