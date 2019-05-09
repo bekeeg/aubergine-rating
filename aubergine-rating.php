@@ -27,6 +27,15 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
+/**
+ * Include CSS file for MyPlugin.
+ */
+function myplugin_scripts() {
+    wp_register_style( 'eggplant-styles',  plugin_dir_url( __FILE__ ) . 'assets/styles/styles.css' );
+    wp_enqueue_style( 'eggplant-styles' );
+}
+add_action( 'wp_enqueue_scripts', 'myplugin_scripts' );
+
 function eggplant_shortcodes_init()
 {
     // [eggplant rating="numeral-one-through-five"]
@@ -43,39 +52,39 @@ function eggplant_shortcodes_init()
 
 // need to read https://speckyboy.com/getting-started-with-wordpress-shortcodes-examples/ & https://developer.wordpress.org/plugins/plugin-basics/
 		if ( $a['rating']==5 ) {
-			echo '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' ;
+			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' ;
 
 		} elseif ( $a['rating']==4 ) {
-			echo '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' ;
+			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' ;
 		
 		} elseif ( $a['rating']==3 ) {
-			echo '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' ;
+			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' ;
 
 		} elseif ( $a['rating']==2 ) {
-			echo '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' ;
+			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' ;
 
 		} elseif ( $a['rating']==1 ) {
-			echo '<img class="eggplant-full" src="' site_url(); '/wp-content/uploads/2019/05/full-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' site_url(); '/wp-content/uploads/2019/05/empty-aubergine.png">' ;
+			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
+				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' ;
 		
 		} else {
 		  return "<pre> the rating of " . $rating . " is invalid.</pre>";
