@@ -49,42 +49,28 @@ function eggplant_shortcodes_init()
 			), $atts );
 
 		$rating = "rating = {$a['rating']}";
+		$eggplant_full = '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">';
+		$eggplant_empty = '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">'; 
 
 // need to read https://speckyboy.com/getting-started-with-wordpress-shortcodes-examples/ & https://developer.wordpress.org/plugins/plugin-basics/
 		if ( $a['rating']==5 ) {
-			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' ;
+			echo str_repeat($eggplant_full,5);
 
 		} elseif ( $a['rating']==4 ) {
-			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' ;
+			echo str_repeat($eggplant_full,4);
+			echo str_repeat($eggplant_empty,1);
 		
 		} elseif ( $a['rating']==3 ) {
-			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' ;
+			echo str_repeat($eggplant_full,3);
+			echo str_repeat($eggplant_empty,2);
 
 		} elseif ( $a['rating']==2 ) {
-			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' ;
+			echo str_repeat($eggplant_full,2);
+			echo str_repeat($eggplant_empty,3);
 
 		} elseif ( $a['rating']==1 ) {
-			echo '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' +
-				 '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">' ;
+			echo str_repeat($eggplant_full,1);
+			echo str_repeat($eggplant_empty,4);
 		
 		} else {
 		  return "<pre> the rating of " . $rating . " is invalid.</pre>";
