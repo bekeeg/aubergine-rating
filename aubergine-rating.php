@@ -48,33 +48,33 @@ function eggplant_shortcodes_init()
 				'rating' => '5',
 			), $atts );
 
-		$rating = "rating = {$a['rating']}";
-		$eggplant_full = '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/full-aubergine.png">';
-		$eggplant_empty = '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . '/assets/images/empty-aubergine.png">'; 
+		$return = '';
 
-// need to read https://speckyboy.com/getting-started-with-wordpress-shortcodes-examples/ & https://developer.wordpress.org/plugins/plugin-basics/
+		$rating = "rating = {$a['rating']}";
+		$eggplant_full = '<img class="eggplant-full" src="' . plugin_dir_url( __FILE__ ) . 'assets/images/full-aubergine.png">';
+		$eggplant_empty = '<img class="eggplant-empty" src="' . plugin_dir_url( __FILE__ ) . 'assets/images/empty-aubergine.png">'; 
+
 		if ( $a['rating']==5 ) {
-			echo str_repeat($eggplant_full,5);
+			$return = str_repeat($eggplant_full, 5). "<br />";
 
 		} elseif ( $a['rating']==4 ) {
-			echo str_repeat($eggplant_full,4);
-			echo str_repeat($eggplant_empty,1);
+			$return = str_repeat($eggplant_full, 4).str_repeat($eggplant_empty, 1). "<br />";
 		
 		} elseif ( $a['rating']==3 ) {
-			echo str_repeat($eggplant_full,3);
-			echo str_repeat($eggplant_empty,2);
+			$return = str_repeat($eggplant_full, 3).str_repeat($eggplant_empty, 2). "<br />";
 
 		} elseif ( $a['rating']==2 ) {
-			echo str_repeat($eggplant_full,2);
-			echo str_repeat($eggplant_empty,3);
+			$return = str_repeat($eggplant_full, 2).str_repeat($eggplant_empty, 3). "<br />";
 
 		} elseif ( $a['rating']==1 ) {
-			echo str_repeat($eggplant_full,1);
-			echo str_repeat($eggplant_empty,4);
+			$return = str_repeat($eggplant_full, 1).str_repeat($eggplant_empty, 4). "<br />";
 		
 		} else {
-		  return "<pre> the rating of " . $rating . " is invalid.</pre>";
+			$return = "<pre> the rating of " . $rating . " is invalid.</pre>";
 		}
+
+		// Return HTML code
+    	return $return;
 
 	}
 	add_shortcode( 'eggplant', 'eggplant_func' );
